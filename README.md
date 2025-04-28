@@ -11,8 +11,8 @@ If you want the code to function 'as is', clone into the repo from the home dire
 cd ~
 git clone https://github.com/nitsewg/kitchen-monitors.git
 ```
-eabod
-The cd into the kitchen-monitors directory, and run the setup script.
+
+Then cd into the kitchen-monitors directory, and run the setup script.
 
 ```bash
 cd kitchen-monitors
