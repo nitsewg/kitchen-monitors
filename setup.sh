@@ -58,12 +58,6 @@ while true; do
     echo "2 - Freezer"
     read unit
 
-while true; do
-    echo "What are you monitoring?"
-    echo "1 - Cooler"
-    echo "2 - Freezer"
-    read unit
-
     case "$unit" in
         1)
             type="Cooler"
