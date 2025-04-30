@@ -58,32 +58,29 @@ while true; do
     echo "2 - Freezer"
     read unit
 
+while true; do
+    echo "What are you monitoring?"
+    echo "1 - Cooler"
+    echo "2 - Freezer"
+    read unit
+
     case "$unit" in
         1)
             type="Cooler"
+            temp="60"
             break
             ;;
         2)
             type="Freezer"
+            temp="40"
             break
             ;;
         *)
-            echo "Invalid input.  Please enter 1 or 2."
+            echo "Invalid input. Please enter 1 or 2."
+            ;;
     esac
 done
 
-case "$type" in
-    "Cooler")
-        temp="60"
-        ;;
-    "Freezer")
-        temp="40"
-        ;;
-    *)
-        echo "Something went wrong, please format info.csv as temp,devicename,emailaddress"
-        exit 1
-        ;;
-esac
 
 echo "You selected $type".
 echo "Building info.csv"
