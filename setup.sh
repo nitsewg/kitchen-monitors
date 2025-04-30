@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 # Bash Settings
 ## abort on nonzero exitstatus
 set -o errexit
@@ -9,11 +8,20 @@ set -o nounset
 ## don't hide errors within pipes
 set -o pipefail
 
-email="wgeorge@monettschools.org"
-echo "Downloading and installing uv."
-curl -LsSf https://astral.sh/uv/install.sh | sh
+email="redacted"
+
+# Check for uv and install if missing
+if command -v uv >/dev/null 2>&1; then
+    echo "uv is already installed."
+else
+    echo "uv not found. Downloading and installing uv."
+    curl -LsSf https://astral.sh/uv/install.sh | sh
+    # Optionally add a hash check here for integrity
+fi
+
 echo "Running uv sync to install dependencies."
 uv sync --no-dev
+
 echo "Setting up cron job to run every 2 hours."
 line="0 */2 * * * /home/pi/kitchen-monitors/checktemp.sh"
 crontab -l | { cat; echo "$line"; } | crontab -
