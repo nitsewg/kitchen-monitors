@@ -8,7 +8,7 @@ set -o nounset
 ## don't hide errors within pipes
 set -o pipefail
 
-email="redacted"
+email="wgeorge@monettschools.org"
 
 # Check for uv and install if missing
 if command -v uv >/dev/null 2>&1; then
