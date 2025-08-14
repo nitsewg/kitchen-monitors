@@ -47,4 +47,4 @@ if temp > int(threshold):
     except:
         print("unable to send email.")
 else:
-    print("Temperature is currently %d",(temp) )
+    print("Temperature is currently %d" % temp )

@@ -1,27 +1,9 @@
 #!/bin/bash
-
-# Bash Settings
-## abort on nonzero exitstatus
-set -o errexit
-## abort on unbound variable
-set -o nounset
-## don't hide errors within pipes
-set -o pipefail
-
-email="wgeorge@monettschools.org"
-
-# Check for uv and install if missing
-if command -v uv >/dev/null 2>&1; then
-    echo "uv is already installed."
-else
-    echo "uv not found. Downloading and installing uv."
-    curl -LsSf https://astral.sh/uv/install.sh | sh
-    # Optionally add a hash check here for integrity
-fi
-
+#email="wgeorge@monettschools.org"
+echo "Downloading and installing uv."
+curl -LsSf https://astral.sh/uv/install.sh | sh
 echo "Running uv sync to install dependencies."
 uv sync --no-dev
-
 echo "Setting up cron job to run every 2 hours."
 line="0 */2 * * * /home/pi/kitchen-monitors/checktemp.sh"
 crontab -l | { cat; echo "$line"; } | crontab -
@@ -40,26 +22,32 @@ while true; do
     case "$campus" in
         1)
             location="MES"
+            email="es-kitchen-monitors@g-apps.monett.k12.mo.us"
             break
             ;;
         2)
             location="MECC"
+            email="ec-kitchen-monitors@g-apps.monett.k12.mo.us"
             break
             ;;
         3)
             location="MIS"
+            email="is-kitchen-monitors@g-apps.monett.k12.mo.us"
             break
             ;;
         4)
             location="MMS"
+            email="ms-kitchen-monitors@g-apps.monett.k12.mo.us"
             break
             ;;
         5)
             location="MHS"
+            email="hs-kitchen-monitors@g-apps.monett.k12.mo.us"
             break
             ;;
         6)
             location="SRTC"
+            email="tc-kitchen-monitors@g-apps.monett.k12.mo.us"
             break
             ;;
         *)
@@ -79,20 +67,29 @@ while true; do
     case "$unit" in
         1)
             type="Cooler"
-            temp="60"
             break
             ;;
         2)
             type="Freezer"
-            temp="40"
             break
             ;;
         *)
-            echo "Invalid input. Please enter 1 or 2."
-            ;;
+            echo "Invalid input.  Please enter 1 or 2."
     esac
 done
 
+case "$type" in
+    "Cooler")
+        temp="60"
+        ;;
+    "Freezer")
+        temp="40"
+        ;;
+    *)
+        echo "Something went wrong, please format info.csv as temp,devicename,emailaddress"
+        exit 1
+        ;;
+esac
 
 echo "You selected $type".
 echo "Building info.csv"
