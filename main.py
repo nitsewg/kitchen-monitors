@@ -32,8 +32,12 @@ time.sleep(2)
 temp = ''
 
 
+try:
+    temperature_c = dht_device.temperature
+except:
+    time.sleep(2)
+    temperature_c = dht_device.temperature
 
-temperature_c = dht_device.temperature
 time.sleep(2)
 
 GPIO.output(17,GPIO.LOW)
