@@ -21,9 +21,24 @@ current = now.strftime("%Y-%m-%d %H:%M:%S")
 
 dht_device = adafruit_dht.DHT22(board.D4)
 
+#Set GPIO 17 for power
+
+GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
+GPIO.setup(17,GPIO.OUT)
+GPIO.output(17,GPIO.HIGH)
 temp = ''
 
+
+
 temperature_c = dht_device.temperature
+
+#Kill power for GPIO 17
+
+GPIO.output(17,GPIO.LOW)
+
+#Convert temp
+
 temp = temperature_c * (9 / 5) + 32
 
 #Set smtp info
