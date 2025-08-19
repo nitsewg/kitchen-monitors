@@ -27,14 +27,14 @@ dht_device = adafruit_dht.DHT22(board.D4)
 GPIO.setmode(GPIO.BCM)
 #GPIO.setwarnings(False)
 GPIO.setup(17,GPIO.OUT)
-GPIO.output(17,GPIO.LOW)
-time.sleep(1)
 GPIO.output(17,GPIO.HIGH)
 temp = ''
 
 
 
 temperature_c = dht_device.temperature
+
+GPIO.output(17,GPIO.LOW)
 
 #Convert temp
 
