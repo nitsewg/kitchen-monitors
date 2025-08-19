@@ -28,11 +28,13 @@ GPIO.setmode(GPIO.BCM)
 #GPIO.setwarnings(False)
 GPIO.setup(17,GPIO.OUT)
 GPIO.output(17,GPIO.HIGH)
+time.sleep(1)
 temp = ''
 
 
 
 temperature_c = dht_device.temperature
+time.sleep(2)
 
 GPIO.output(17,GPIO.LOW)
 
