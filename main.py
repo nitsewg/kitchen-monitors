@@ -4,6 +4,7 @@ import smtplib
 import board
 import csv
 import RPi.GPIO as GPIO
+import time
 
 with open('/home/pi/kitchen-monitors/info.csv') as csv_file:
     read_csv = csv.reader(csv_file, delimiter=',')
@@ -25,9 +26,9 @@ dht_device = adafruit_dht.DHT22(board.D4)
 
 GPIO.setmode(GPIO.BCM)
 #GPIO.setwarnings(False)
-GPIO.setup(17,GPIO.IN)
-GPIO.output(17,GPIO.LOW)
 GPIO.setup(17,GPIO.OUT)
+GPIO.output(17,GPIO.LOW)
+time.sleep(1)
 GPIO.output(17,GPIO.HIGH)
 temp = ''
 
