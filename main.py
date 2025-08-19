@@ -24,9 +24,10 @@ dht_device = adafruit_dht.DHT22(board.D4)
 #Set GPIO 17 for power
 
 GPIO.setmode(GPIO.BCM)
-GPIO.setwarnings(False)
-GPIO.setup(17,GPIO.OUT)
+#GPIO.setwarnings(False)
+GPIO.setup(17,GPIO.IN)
 GPIO.output(17,GPIO.LOW)
+GPIO.setup(17,GPIO.OUT)
 GPIO.output(17,GPIO.HIGH)
 temp = ''
 
