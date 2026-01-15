@@ -9,6 +9,8 @@ line="0 */2 * * * /home/pi/kitchen-monitors/checktemp.sh"
 crontab -l | { cat; echo "$line"; } | crontab -
 line2="0 */6 * * * cd /home/pi/kitchen-monitors/ && git pull"
 crontab -l | { cat; echo "$line2"; } | crontab -
+line3="0 3 * * 6 sudo reboot"
+crontab -l | { cat; echo "$line3"; } | crontab -
 while true; do
     echo "Enter the number for the campus:"
     echo "1 - MES"
