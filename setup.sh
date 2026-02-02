@@ -2,6 +2,7 @@
 #email="wgeorge@monettschools.org"
 echo "Downloading and installing uv."
 curl -LsSf https://astral.sh/uv/install.sh | sh
+source $HOME/.local/bin/env
 echo "Running uv sync to install dependencies."
 uv sync --no-dev
 echo "Setting up cron job to run every 2 hours."
