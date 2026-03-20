@@ -34,6 +34,10 @@ temp = ''
 
 try:
     temperature_c = dht_device.temperature
+    while temperature_c > 100:
+        print(temperature_c)
+        temperature_c = dht_device.temperature
+        
 except:
     try:
         time.sleep(2)
