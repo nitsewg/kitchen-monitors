@@ -37,7 +37,7 @@ try:
     x = 0
     while temperature_c > 100:
         print("quitting")
-        quit()
+        exit()
         # time.sleep(3)
         # print(temperature_c)
         # temperature_c = dht_device.temperature
