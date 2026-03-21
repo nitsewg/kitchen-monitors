@@ -35,9 +35,9 @@ temp = ''
 try:
     temperature_c = dht_device.temperature
     x = 0
-    while temperature_c > 100:
+    if temperature_c > 100:
         print("quitting")
-        exit()
+        quit()
         # time.sleep(3)
         # print(temperature_c)
         # temperature_c = dht_device.temperature
