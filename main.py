@@ -36,26 +36,28 @@ try:
     temperature_c = dht_device.temperature
     x = 0
     while temperature_c > 100:
-        time.sleep(3)
-        print(temperature_c)
-        temperature_c = dht_device.temperature
-        x += 1
-        if x == 25:
-                    #Set smtp info
+        print("quitting")
+        quit()
+        # time.sleep(3)
+        # print(temperature_c)
+        # temperature_c = dht_device.temperature
+        # x += 1
+        # if x == 25:
+        #             #Set smtp info
 
-            sender = f'{device_name}@monettschools.org'
-            receivers = f'{email_address}'
-            message = f"""Subject: ***{device_name} Unable to get reading***
+        #     sender = f'{device_name}@monettschools.org'
+        #     receivers = f'{email_address}'
+        #     message = f"""Subject: ***{device_name} Unable to get reading***
 
-            The {device_name} monitor failed to get a reading.  Try removing and reconnecting power to the device, and check wiring.
+        #     The {device_name} monitor failed to get a reading.  Try removing and reconnecting power to the device, and check wiring.
 
-            Current date / time: {current}
-            """
-            try:
-                smtpObj = smtplib.SMTP('192.168.30.69')
-                smtpObj.sendmail(sender, receivers, message)  
-            except:
-                print("unable to send email.")
+        #     Current date / time: {current}
+        #     """
+        #     try:
+        #         smtpObj = smtplib.SMTP('192.168.30.69')
+        #         smtpObj.sendmail(sender, receivers, message)  
+        #     except:
+        #         print("unable to send email.")
             
         
         
