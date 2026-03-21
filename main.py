@@ -34,10 +34,10 @@ temp = ''
 
 try:
     temperature_c = dht_device.temperature
-    x = 0
-    if temperature_c > 100:
-        print("quitting")
-        quit()
+    # x = 0
+    # if temperature_c > 100:
+    #     print("quitting")
+    #     quit()
         # time.sleep(3)
         # print(temperature_c)
         # temperature_c = dht_device.temperature
@@ -104,7 +104,7 @@ Current date / time: {current}
 # print('Temp={0:0.1f}*C  Humidity={1:0.1f}%'.format(t,h))
 
 
-if temp > int(threshold):
+if temp > int(threshold) and temp < 100:
     try:
         smtpObj = smtplib.SMTP('192.168.30.69')
         smtpObj.sendmail(sender, receivers, message)  
