@@ -34,6 +34,7 @@ temp = ''
 
 try:
     temperature_c = dht_device.temperature
+    print(temperature_c)
     # x = 0
     # if temperature_c > 100:
     #     print("quitting")
