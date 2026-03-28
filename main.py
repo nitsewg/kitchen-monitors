@@ -73,7 +73,8 @@ except:
         receivers = f'{email_address}'
         message = f"""Subject: ***{device_name} Unable to get reading***
 
-        The {device_name} monitor failed to get a reading.  Try removing and reconnecting power to the device, and check wiring.
+        The {device_name} monitor failed to get a reading.  This check is performed every 2 hours. 
+        If you have received multiple failed readings in a row, please put in a help ticket with the name of the device.
 
         Current date / time: {current}
         """
